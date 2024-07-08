@@ -62,3 +62,22 @@ This Streamlit application captures barcode data using OpenCV, allows users to i
    ```
 
 This Streamlit application combines computer vision, natural language processing, and cloud storage integration to provide a seamless barcode scanning and data collection tool suitable for various use cases such as inventory management, attendance tracking, and more.
+
+### Required libraries
+# Run the Requirements 
+1. first of all you need to install Streamlit
+   ```sh
+   pip install streamlit
+```
+2. then upgrade the streamlit
+   ```sh
+   pip install --upgrade streamlit click
+```
+3. upgrade the plotly for data operations in streamlit interface
+   ```sh
+   pip install --upgrade plotly streamlit
+```
+4. This is very important
+   ```sh
+   pip install opencv-python-headless pyzbar pandas openpyxl
+```
