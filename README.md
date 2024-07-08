@@ -69,14 +69,17 @@ This Streamlit application combines computer vision, natural language processing
    ```sh
    pip install streamlit
 ```
+
 2. then upgrade the streamlit
    ```sh
    pip install --upgrade streamlit click
 ```
+
 3. upgrade the plotly for data operations in streamlit interface
    ```sh
    pip install --upgrade plotly streamlit
 ```
+
 4. This is very important
    ```sh
    pip install opencv-python-headless pyzbar pandas openpyxl
