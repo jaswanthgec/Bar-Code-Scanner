@@ -65,22 +65,12 @@ This Streamlit application combines computer vision, natural language processing
 
 ### Required libraries
 # Run the Requirements 
-1. first of all you need to install Streamlit
+1. first of all you need to install Streamlit and other required libraries:
    ```sh
    pip install streamlit
-```
-
-2. then upgrade the streamlit
-   ```sh
    pip install --upgrade streamlit click
-```
-
-3. upgrade the plotly for data operations in streamlit interface
-   ```sh
    pip install --upgrade plotly streamlit
-```
-
-4. This is very important
-   ```sh
    pip install opencv-python-headless pyzbar pandas openpyxl
+   pip install PyGithub
+   streamlit run barscan.py  
 ```
