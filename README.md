@@ -73,4 +73,3 @@ This Streamlit application combines computer vision, natural language processing
    pip install opencv-python-headless pyzbar pandas openpyxl
    pip install PyGithub
    streamlit run barscan.py  
-```
