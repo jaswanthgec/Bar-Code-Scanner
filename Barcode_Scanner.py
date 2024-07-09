@@ -12,10 +12,6 @@ from pydub import AudioSegment
 from pydub.playback import play
 import time
 
-# Ensure ffmpeg is available
-ffmpeg_path = r'C:\ffmpeg\bin'  # Adjust the path to where ffmpeg is installed
-os.environ["PATH"] += os.pathsep + ffmpeg_path
-
 # Function to capture frame from URL
 def get_frame(url):
     cap = cv2.VideoCapture(url)
