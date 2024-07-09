@@ -1,5 +1,5 @@
 streamlit
-opencv-python
+opencv-python-headless  # Ensure this is the headless version
 pyzbar
 pandas
 openpyxl
