@@ -1,76 +1,86 @@
-# Bar-Code-Scanner
+# Bar Code Scanner & Voice Recognizer
 This Streamlit app captures barcode data from a video feed, accepts text or voice input, and saves the information to a GitHub repository.
 
 [python] Certainly! Here's a short description of the Streamlit program that scans barcodes, accepts user input (text or voice), and saves the data to Google Sheets or a GitHub repository:
 
-### Program Description
+## Description of the Streamlit Project
 
-This Streamlit application captures barcode data using OpenCV, allows users to input additional information via text or voice, and saves the collected data to either Google Sheets or a GitHub repository. The application features:
+### Definition
+This project is a Streamlit web application that uses OpenCV (cv2) and Pyzbar to capture video frames from a specified URL, decode barcodes from these frames, convert speech to text, and save the captured data into an Excel file. The application also interacts with the GitHub API and uses text-to-speech for voice feedback.
 
-1. **Barcode Scanning**:
-   - Captures video frames from a user-specified URL (e.g., a network camera).
-   - Uses OpenCV and `pyzbar` to decode barcodes within the captured frames.
-   - Displays the captured frame and decoded barcode data.
-
-2. **User Input**:
-   - Provides a text box for manual input.
-   - Allows voice input using the `speech_recognition` library, converting speech to text.
-
-3. **Data Saving**:
-   - **Google Sheets**: Saves the barcode data, current timestamp, and user input to a Google Sheets document using the `gspread` and `oauth2client` libraries for authentication and interaction with Google Sheets.
-   - **GitHub**: Saves the barcode data, current timestamp, and user input to a file in a specified GitHub repository using the `PyGithub` library for interaction with the GitHub API.
+### Uses and Applications
+- **Barcode Scanning**: Capture and decode barcodes from live video feeds.
+- **Speech to Text**: Convert voice input into text using Google Speech Recognition.
+- **Data Storage**: Save barcode data along with user input into an Excel file.
+- **Voice Feedback**: Provide voice prompts and feedback using gTTS and pydub.
+- **GitHub API Interaction**: Fetch and display GitHub user information using a personal access token.
 
 ### Key Features
+1. **Video Frame Capture**: Capture frames from a video URL and decode barcodes.
+2. **Excel Integration**: Save decoded barcode data and user input into an Excel file.
+3. **Speech Recognition**: Convert speech to text to capture user input.
+4. **Voice Prompts**: Use text-to-speech to guide the user and confirm actions.
+5. **Admin Section**: View past records with password-protected access.
+6. **GitHub API**: Retrieve GitHub user information using a personal access token.
 
-- **Video Capture**: Users provide a URL for video capture. The application fetches frames from this URL and decodes any barcodes present in the frames.
-- **Text and Voice Input**: Users can provide additional information either by typing in a text box or by recording their voice, which is then converted to text.
-- **Data Storage**: The collected data is saved along with a timestamp. Users can choose to save the data in a Google Sheet or a GitHub repository file.
+### Installation Procedure
 
-### Code Structure
+#### Step 1: Install Python and Dependencies
+Ensure you have Python installed on your system. Then, create a `requirements.txt` file with the following content:
 
-1. **Main Functions**:
-   - `get_frame(url)`: Captures a frame from the provided video URL.
-   - `save_to_google_sheets(barcode_data, user_input)`: Saves data to a Google Sheets document.
-   - `save_to_github(barcode_data, user_input, repo_name, file_path, token)`: Saves data to a file in a GitHub repository.
-   - `speech_to_text()`: Converts speech input to text using Google's speech recognition API.
+```plaintext
+streamlit
+opencv-python
+pyzbar
+pandas
+openpyxl
+Pillow
+speechrecognition
+gtts
+pydub
+requests
+```
 
-2. **Streamlit Interface**:
-   - Provides text inputs for the video URL, GitHub repository details, and Google Sheets configuration.
-   - Buttons for starting the barcode scanning process, recording voice input, and submitting the data.
-   - Displays the captured image and scanned barcode data.
+Install the dependencies using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+#### Step 2: Install ffmpeg
+Download and install ffmpeg from [FFmpeg's official website](https://ffmpeg.org/download.html). Ensure the path to `ffmpeg` executable is added to your system's PATH environment variable.
+
+#### Step 3: Set Up Environment Variables
+Set the `GITHUB_API_KEY` environment variable with your GitHub API token. For example:
+
+- **Linux/macOS**:
+  ```bash
+  export GITHUB_API_KEY=your_github_api_key_here
+  ```
+- **Windows**:
+  ```bash
+  set GITHUB_API_KEY=your_github_api_key_here
+  ```
+
+#### Step 4: Run the Application
+Save your script as `app.py` and run the Streamlit application:
+
+```bash
+streamlit run app.py
+```
 
 ### Example Usage
+1. **Start the Application**: Open your terminal and run the Streamlit app using the command above.
+2. **Enter Video URL**: Provide the URL for the video stream from which barcodes will be captured.
+3. **Start Scanning**: Click the "Start Scanning" button to capture frames and decode barcodes.
+4. **Voice Input**: Use the voice input feature to record and save user queries along with the barcode data.
+5. **View Past Records**: Admins can view past scanned records by entering the correct admin password.
 
-1. **Barcode Scanning**:
-   - Input the video capture URL.
-   - Click "Start Scanning" to capture and decode barcodes from the video feed.
+### Additional Notes
+- Ensure your system has an active internet connection for Google Speech Recognition and GitHub API features.
+- The admin password for accessing past records should be securely managed and changed as needed.
 
-2. **User Input**:
-   - Enter additional information in the text box or click "Record Voice" to provide input via speech.
-
-3. **Data Submission**:
-   - For Google Sheets: Ensure Google Sheets API is set up and provide the path to the credentials JSON file.
-   - For GitHub: Provide the repository name, file path, and GitHub access token.
-   - Click "Submit" to save the data.
-
-### Running the App
-
-1. Save the code in a file named `bar1.py`.
-2. Run the Streamlit app with:
-   ```sh
-   streamlit run bar1.py
-   ```
-
-This Streamlit application combines computer vision, natural language processing, and cloud storage integration to provide a seamless barcode scanning and data collection tool suitable for various use cases such as inventory management, attendance tracking, and more.
-
-### Required libraries
-# Run the Requirements 
-1. first of all you need to install Streamlit and other required libraries:
-   ```sh
-   pip install streamlit opencv-python pyzbar pandas pillow speechrecognition pyttsx3 openpyxl requests 
-   ```
-
-# Applications:
+# Potential Applications:
 
 This code involves several key functionalities such as video capture, barcode scanning, speech recognition, and data storage. Here are some related applications that could leverage these capabilities:
 
