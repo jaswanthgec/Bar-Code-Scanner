@@ -1,0 +1,10 @@
+streamlit
+opencv-python
+pyzbar
+pandas
+openpyxl
+Pillow
+speechrecognition
+gtts
+pydub
+requests
