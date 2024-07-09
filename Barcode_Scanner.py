@@ -64,12 +64,10 @@ def speech_to_text():
 
 # Function to make a GitHub API request and maintain persistent connection
 def get_github_user_info():
-    api_key = os.getenv('GITHUB_API_KEY')
+    api_key = st.secrets["GITHUB_API_KEY"]
     if not api_key:
         st.error("GitHub API key not found. Please set the GITHUB_API_KEY environment variable.")
         return None
-    else:
-        st.write(f"GITHUB_API_KEY is set: {api_key}")  # Debugging information
 
     url = "https://api.github.com/user"
     headers = {"Authorization": f"token {api_key}"}
