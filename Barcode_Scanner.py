@@ -64,9 +64,10 @@ def speech_to_text():
 
 # Function to make a GitHub API request and maintain persistent connection
 def get_github_user_info():
-    api_key = st.secrets["GITHUB_API_KEY"]
-    if not api_key:
-        st.error("GitHub API key not found. Please set the GITHUB_API_KEY environment variable.")
+    try:
+        api_key = st.secrets["GITHUB_API_KEY"]
+    except KeyError:
+        st.error("GitHub API key not found. Please set the GITHUB_API_KEY secret.")
         return None
 
     url = "https://api.github.com/user"
