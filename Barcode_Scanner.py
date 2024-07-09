@@ -12,9 +12,9 @@ from pydub import AudioSegment
 from pydub.playback import play
 import time
 
-# Function to capture frame from URL
-def get_frame(url):
-    cap = cv2.VideoCapture(url)
+# Function to capture frame from URL or local file
+def get_frame(source):
+    cap = cv2.VideoCapture(source)
     if not cap.isOpened():
         st.error("Error: Unable to open video capture.")
         return None
@@ -95,7 +95,7 @@ if 'github_user_info' not in st.session_state:
 # Streamlit interface
 st.title("Barcode Scanner")
 
-url = st.text_input("Enter the URL for video capture", "http://192.168.0.125:8080/video")
+url = st.text_input("Enter the URL for video capture or local video file path", "http://192.168.0.125:8080/video")
 
 def scan_barcodes():
     while True:
