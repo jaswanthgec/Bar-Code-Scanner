@@ -6,11 +6,11 @@ import datetime
 import os
 from PIL import Image
 import speech_recognition as sr
-import time
 import requests
 from gtts import gTTS
 from pydub import AudioSegment
 from pydub.playback import play
+import time
 
 # Ensure ffmpeg is available
 ffmpeg_path = r'C:\ffmpeg\bin'  # Adjust the path to where ffmpeg is installed
@@ -65,7 +65,7 @@ def speech_to_text():
 # Function to make a GitHub API request and maintain persistent connection
 def get_github_user_info():
     try:
-        api_key = st.secrets["GITHUB_API_KEY"]
+        api_key = st.secrets["GITHUB"]["GITHUB_API_KEY"]
     except KeyError:
         st.error("GitHub API key not found. Please set the GITHUB_API_KEY secret.")
         return None
@@ -101,7 +101,7 @@ st.title("Barcode Scanner")
 
 url = st.text_input("Enter the URL for video capture", "http://192.168.0.125:8080/video")
 
-if st.button("Start Scanning"):
+def scan_barcodes():
     while True:
         st.write("Trying to capture frame...")
         frame = get_frame(url)
@@ -132,13 +132,15 @@ if st.button("Start Scanning"):
                     else:
                         st.error("User input is required to save data.")
                     
-                    break  # Exit the loop after scanning a barcode
-                break  # Stop scanning once a barcode is found and processed
+                    return  # Exit the function after processing a barcode
             else:
                 st.write("No barcodes found in the current frame.")
         else:
             st.write("Error capturing frame from the camera.")
         time.sleep(1)  # Add a delay to prevent excessive looping
+
+if st.button("Start Scanning"):
+    scan_barcodes()
 
 # Voice input button
 if st.button("Record Voice"):
